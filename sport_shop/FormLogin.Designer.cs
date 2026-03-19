@@ -63,7 +63,6 @@
             // 
             // labelPassword
             // 
-            labelPassword.Anchor = AnchorStyles.None;
             labelPassword.AutoSize = true;
             labelPassword.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             labelPassword.Location = new Point(318, 121);
