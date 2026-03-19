@@ -73,31 +73,33 @@
             // 
             // buttonEnter
             // 
+            buttonEnter.BackColor = Color.FromArgb(67, 97, 238);
             buttonEnter.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
             buttonEnter.Location = new Point(351, 203);
             buttonEnter.Name = "buttonEnter";
             buttonEnter.Size = new Size(88, 32);
             buttonEnter.TabIndex = 4;
             buttonEnter.Text = "Войти";
-            buttonEnter.UseVisualStyleBackColor = true;
+            buttonEnter.UseVisualStyleBackColor = false;
             buttonEnter.Click += buttonEnter_Click;
             // 
             // buttonGuest
             // 
+            buttonGuest.BackColor = Color.FromArgb(233, 245, 255);
             buttonGuest.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
             buttonGuest.Location = new Point(311, 241);
             buttonGuest.Name = "buttonGuest";
             buttonGuest.Size = new Size(168, 32);
             buttonGuest.TabIndex = 5;
             buttonGuest.Text = "Войти как гость";
-            buttonGuest.UseVisualStyleBackColor = true;
+            buttonGuest.UseVisualStyleBackColor = false;
             buttonGuest.Click += buttonGuest_Click;
             // 
             // FormLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.White;
+            BackColor = Color.FromArgb(248, 249, 250);
             ClientSize = new Size(784, 361);
             Controls.Add(buttonGuest);
             Controls.Add(buttonEnter);
