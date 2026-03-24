@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             labelLogin = new Label();
             textBoxLogin = new TextBox();
             textBoxPassword = new TextBox();
             labelPassword = new Label();
             buttonEnter = new Button();
             buttonGuest = new Button();
+            pictureBoxLogo = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
             SuspendLayout();
             // 
             // labelLogin
@@ -41,7 +44,7 @@
             labelLogin.Anchor = AnchorStyles.None;
             labelLogin.AutoSize = true;
             labelLogin.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelLogin.Location = new Point(325, 47);
+            labelLogin.Location = new Point(166, 147);
             labelLogin.Name = "labelLogin";
             labelLogin.Size = new Size(141, 25);
             labelLogin.TabIndex = 0;
@@ -49,15 +52,16 @@
             // 
             // textBoxLogin
             // 
-            textBoxLogin.Location = new Point(285, 75);
+            textBoxLogin.Location = new Point(126, 175);
             textBoxLogin.Name = "textBoxLogin";
             textBoxLogin.Size = new Size(220, 23);
             textBoxLogin.TabIndex = 1;
             // 
             // textBoxPassword
             // 
-            textBoxPassword.Location = new Point(285, 149);
+            textBoxPassword.Location = new Point(126, 249);
             textBoxPassword.Name = "textBoxPassword";
+            textBoxPassword.PasswordChar = '*';
             textBoxPassword.Size = new Size(220, 23);
             textBoxPassword.TabIndex = 3;
             // 
@@ -65,7 +69,7 @@
             // 
             labelPassword.AutoSize = true;
             labelPassword.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelPassword.Location = new Point(318, 121);
+            labelPassword.Location = new Point(159, 221);
             labelPassword.Name = "labelPassword";
             labelPassword.Size = new Size(154, 25);
             labelPassword.TabIndex = 2;
@@ -75,7 +79,7 @@
             // 
             buttonEnter.BackColor = Color.FromArgb(67, 97, 238);
             buttonEnter.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            buttonEnter.Location = new Point(351, 203);
+            buttonEnter.Location = new Point(192, 303);
             buttonEnter.Name = "buttonEnter";
             buttonEnter.Size = new Size(88, 32);
             buttonEnter.TabIndex = 4;
@@ -85,9 +89,9 @@
             // 
             // buttonGuest
             // 
-            buttonGuest.BackColor = Color.FromArgb(233, 245, 255);
+            buttonGuest.BackColor = Color.FromArgb(67, 97, 238);
             buttonGuest.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            buttonGuest.Location = new Point(311, 241);
+            buttonGuest.Location = new Point(152, 341);
             buttonGuest.Name = "buttonGuest";
             buttonGuest.Size = new Size(168, 32);
             buttonGuest.TabIndex = 5;
@@ -95,12 +99,23 @@
             buttonGuest.UseVisualStyleBackColor = false;
             buttonGuest.Click += buttonGuest_Click;
             // 
+            // pictureBoxLogo
+            // 
+            pictureBoxLogo.Image = (Image)resources.GetObject("pictureBoxLogo.Image");
+            pictureBoxLogo.Location = new Point(186, 48);
+            pictureBoxLogo.Name = "pictureBoxLogo";
+            pictureBoxLogo.Size = new Size(100, 96);
+            pictureBoxLogo.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBoxLogo.TabIndex = 6;
+            pictureBoxLogo.TabStop = false;
+            // 
             // FormLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(248, 249, 250);
-            ClientSize = new Size(784, 361);
+            ClientSize = new Size(457, 394);
+            Controls.Add(pictureBoxLogo);
             Controls.Add(buttonGuest);
             Controls.Add(buttonEnter);
             Controls.Add(textBoxPassword);
@@ -109,6 +124,7 @@
             Controls.Add(labelLogin);
             Name = "FormLogin";
             Text = "FormLogin";
+            ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -121,5 +137,6 @@
         private Label labelPassword;
         private Button buttonEnter;
         private Button buttonGuest;
+        private PictureBox pictureBoxLogo;
     }
 }

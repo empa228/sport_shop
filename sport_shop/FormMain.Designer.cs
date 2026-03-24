@@ -28,78 +28,117 @@
         /// </summary>
         private void InitializeComponent()
         {
-            flowLayoutPanelTop = new FlowLayoutPanel();
-            buttonAdd = new Button();
-            buttonEdit = new Button();
             buttonDel = new Button();
+            buttonEdit = new Button();
+            buttonAdd = new Button();
+            panelTop = new Panel();
+            labelProfile = new Label();
+            buttonExit = new Button();
             panelFill = new Panel();
-            dataGridView = new DataGridView();
-            flowLayoutPanelTop.SuspendLayout();
+            dataGridViewProd = new DataGridView();
+            panelTop.SuspendLayout();
             panelFill.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewProd).BeginInit();
             SuspendLayout();
-            // 
-            // flowLayoutPanelTop
-            // 
-            flowLayoutPanelTop.Controls.Add(buttonAdd);
-            flowLayoutPanelTop.Controls.Add(buttonEdit);
-            flowLayoutPanelTop.Controls.Add(buttonDel);
-            flowLayoutPanelTop.Dock = DockStyle.Top;
-            flowLayoutPanelTop.Location = new Point(0, 0);
-            flowLayoutPanelTop.Name = "flowLayoutPanelTop";
-            flowLayoutPanelTop.Padding = new Padding(7);
-            flowLayoutPanelTop.Size = new Size(800, 56);
-            flowLayoutPanelTop.TabIndex = 0;
-            // 
-            // buttonAdd
-            // 
-            buttonAdd.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            buttonAdd.Location = new Point(10, 10);
-            buttonAdd.Name = "buttonAdd";
-            buttonAdd.Size = new Size(110, 35);
-            buttonAdd.TabIndex = 0;
-            buttonAdd.Text = "Добавить";
-            buttonAdd.UseVisualStyleBackColor = true;
-            // 
-            // buttonEdit
-            // 
-            buttonEdit.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            buttonEdit.Location = new Point(126, 10);
-            buttonEdit.Name = "buttonEdit";
-            buttonEdit.Size = new Size(130, 35);
-            buttonEdit.TabIndex = 1;
-            buttonEdit.Text = "Редактировать";
-            buttonEdit.UseVisualStyleBackColor = true;
             // 
             // buttonDel
             // 
+            buttonDel.BackColor = Color.FromArgb(67, 97, 238);
             buttonDel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            buttonDel.Location = new Point(262, 10);
+            buttonDel.Location = new Point(260, 12);
             buttonDel.Name = "buttonDel";
             buttonDel.Size = new Size(110, 35);
             buttonDel.TabIndex = 2;
             buttonDel.Text = "Удалить";
-            buttonDel.UseVisualStyleBackColor = true;
+            buttonDel.UseVisualStyleBackColor = false;
+            // 
+            // buttonEdit
+            // 
+            buttonEdit.BackColor = Color.FromArgb(67, 97, 238);
+            buttonEdit.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            buttonEdit.Location = new Point(124, 12);
+            buttonEdit.Name = "buttonEdit";
+            buttonEdit.Size = new Size(130, 35);
+            buttonEdit.TabIndex = 1;
+            buttonEdit.Text = "Редактировать";
+            buttonEdit.UseVisualStyleBackColor = false;
+            // 
+            // buttonAdd
+            // 
+            buttonAdd.BackColor = Color.FromArgb(67, 97, 238);
+            buttonAdd.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            buttonAdd.Location = new Point(8, 12);
+            buttonAdd.Name = "buttonAdd";
+            buttonAdd.Size = new Size(110, 35);
+            buttonAdd.TabIndex = 0;
+            buttonAdd.Text = "Добавить";
+            buttonAdd.UseVisualStyleBackColor = false;
+            // 
+            // panelTop
+            // 
+            panelTop.BackColor = Color.FromArgb(248, 249, 250);
+            panelTop.Controls.Add(labelProfile);
+            panelTop.Controls.Add(buttonExit);
+            panelTop.Controls.Add(buttonAdd);
+            panelTop.Controls.Add(buttonEdit);
+            panelTop.Controls.Add(buttonDel);
+            panelTop.Dock = DockStyle.Top;
+            panelTop.Location = new Point(0, 0);
+            panelTop.Name = "panelTop";
+            panelTop.Padding = new Padding(7);
+            panelTop.Size = new Size(800, 57);
+            panelTop.TabIndex = 2;
+            // 
+            // labelProfile
+            // 
+            labelProfile.AutoSize = true;
+            labelProfile.Dock = DockStyle.Right;
+            labelProfile.Location = new Point(683, 7);
+            labelProfile.Name = "labelProfile";
+            labelProfile.Size = new Size(0, 15);
+            labelProfile.TabIndex = 4;
+            // 
+            // buttonExit
+            // 
+            buttonExit.BackColor = Color.FromArgb(67, 97, 238);
+            buttonExit.Dock = DockStyle.Right;
+            buttonExit.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            buttonExit.Location = new Point(683, 7);
+            buttonExit.Name = "buttonExit";
+            buttonExit.Size = new Size(110, 43);
+            buttonExit.TabIndex = 3;
+            buttonExit.Text = "Выход";
+            buttonExit.UseVisualStyleBackColor = false;
+            buttonExit.Click += buttonExit_Click;
             // 
             // panelFill
             // 
-            panelFill.Controls.Add(dataGridView);
+            panelFill.AutoSize = true;
+            panelFill.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            panelFill.BackColor = Color.FromArgb(248, 249, 250);
+            panelFill.Controls.Add(dataGridViewProd);
             panelFill.Dock = DockStyle.Fill;
-            panelFill.Location = new Point(0, 56);
+            panelFill.Location = new Point(0, 57);
             panelFill.Name = "panelFill";
             panelFill.Padding = new Padding(7);
-            panelFill.Size = new Size(800, 394);
-            panelFill.TabIndex = 1;
+            panelFill.Size = new Size(800, 393);
+            panelFill.TabIndex = 3;
             // 
-            // dataGridView
+            // dataGridViewProd
             // 
-            dataGridView.BackgroundColor = Color.White;
-            dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView.Dock = DockStyle.Fill;
-            dataGridView.Location = new Point(7, 7);
-            dataGridView.Name = "dataGridView";
-            dataGridView.Size = new Size(786, 380);
-            dataGridView.TabIndex = 0;
+            dataGridViewProd.AllowUserToAddRows = false;
+            dataGridViewProd.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewProd.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
+            dataGridViewProd.BackgroundColor = Color.FromArgb(248, 249, 250);
+            dataGridViewProd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewProd.Dock = DockStyle.Fill;
+            dataGridViewProd.Location = new Point(7, 7);
+            dataGridViewProd.Name = "dataGridViewProd";
+            dataGridViewProd.ReadOnly = true;
+            dataGridViewProd.RowHeadersVisible = false;
+            dataGridViewProd.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewProd.Size = new Size(786, 379);
+            dataGridViewProd.TabIndex = 0;
             // 
             // FormMain
             // 
@@ -108,22 +147,25 @@
             BackColor = Color.White;
             ClientSize = new Size(800, 450);
             Controls.Add(panelFill);
-            Controls.Add(flowLayoutPanelTop);
+            Controls.Add(panelTop);
             Name = "FormMain";
             Text = "FormMain";
-            flowLayoutPanelTop.ResumeLayout(false);
+            panelTop.ResumeLayout(false);
+            panelTop.PerformLayout();
             panelFill.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewProd).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        private FlowLayoutPanel flowLayoutPanelTop;
-        private Panel panelFill;
-        private DataGridView dataGridView;
-        private Button buttonAdd;
-        private Button buttonEdit;
+        private Panel panelTop;
         private Button buttonDel;
+        private Button buttonEdit;
+        private Button buttonAdd;
+        private Label labelProfile;
+        private Button buttonExit;
+        private Panel panelFill;
+        private DataGridView dataGridViewProd;
     }
 }

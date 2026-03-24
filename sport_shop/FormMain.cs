@@ -1,13 +1,14 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using sport_shop.models1;
+using sport_shop.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using sport_shop.models1;
-using Microsoft.EntityFrameworkCore;
-using sport_shop.Properties;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace sport_shop
 {
@@ -35,20 +36,54 @@ namespace sport_shop
             colDiscount.Name = "colDiscount";
             colDiscount.FillWeight = 10;
             colDiscount.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            dataGridViewProd.Columns.AddRange(
+            [
+                colPhoto, colInfo, colDiscount
+            ]);
+
+            CurrentUser = user;
+            IsGuest = guest;
+
+            labelProfile.Text = IsGuest ? "Гость" : CurrentUser.LastName+ " " +
+                CurrentUser.FirstName+ " " +
+                CurrentUser.MiddleName;
+
+            LoadProducts();
         }
         private void LoadProducts()
         {
             try
             {
-                using (var db = new SportShopContext)
+                using (var db = new SportShopContext())
                 {
                     var products = db.Products
-                        .Include(i => i.CategoryName)
+                        .Include(i => i.Category)
                         .Include(i => i.Manufacturer)
                         .Include(i => i.Supplier)
-                        .Include(i => i.Measure)
-                        .Include(i => i.ProductType)
+                        .Include(i => i.Discount)
                         .ToList();
+
+                    dataGridViewProd.SuspendLayout();
+                    dataGridViewProd.Rows.Clear();
+
+                    foreach (var product in products)
+                    {
+                        int rowIndex = dataGridViewProd.Rows.Add();
+                        var row = dataGridViewProd.Rows[rowIndex];
+
+                        row.Cells["colPhoto"].Value = null;
+
+                        row.Cells["colInfo"].Value = FormatProductInfo(product);
+
+                        row.Cells["colDiscount"].Value = $"{product.Discount.DiscountPercent}%";
+                        row.Cells["colDiscount"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                        ApplyRowStyles(row, product);
+                    }
+
+                    dataGridViewProd.ResumeLayout();
+                    dataGridViewProd.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
                 }
             }
             catch (Exception ex)
@@ -56,6 +91,62 @@ namespace sport_shop
                 MessageBox.Show($"Ошибка загрузки: {ex.Message}", "Ошибка",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+            private void ApplyRowStyles(DataGridViewRow row, Product product)
+        {
+            if (product.Discount.DiscountPercent > 15)
+            {
+                row.DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#2EC4B6");
+                row.DefaultCellStyle.ForeColor = Color.White;
+            }
+
+            if (product.StockQuantity <= 0)
+            {
+                row.DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#E9F5FF");
+                if (product.Discount.DiscountPercent <= 15)
+                {
+                    row.DefaultCellStyle.ForeColor = Color.Black;
+                }
+            }
+
+            if (product.Discount.DiscountPercent > 0)
+            {
+                row.Cells["colDiscount"].Style.ForeColor = Color.Red;
+                row.Cells["colDiscount"].Style.Font = new System.Drawing.Font(
+                    "Times New Roman",
+                    12,
+                    FontStyle.Bold);
+            }
+        }
+
+        private string FormatProductInfo(Product product)
+        {
+            string priceText;
+
+            if (product.Discount.DiscountPercent > 0)
+            {
+                decimal finalPrice = product.Price * (100 - product.Discount.DiscountPercent) / 100;
+                priceText = $"Цена: {product.Price:C} -> {finalPrice:C}";
+            }
+            else
+            {
+                priceText = $"Цена: {product.Price:C}";
+            }
+
+            return $"{product.Category.CategoryName} | {product.Category.CategoryName} " + Environment.NewLine +
+                $"Описание товара: {product.Description}" + Environment.NewLine +
+                $"Производитель: {product.Manufacturer.ManufacturerName}" + Environment.NewLine +
+                $"Поставщик: {product.Supplier.SupplierName}" + Environment.NewLine +
+                $"{priceText}" + Environment.NewLine +
+                $"Единица измерения: {product.Unit}" + Environment.NewLine +
+                $"Количество на складе: {product.StockQuantity}";
+        }
+
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
     }
 }
